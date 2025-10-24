@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  min-height: 100%;
+  background-color: #f5f5f5;
+}
+
+section {
+  margin: 80px 40px 0;
+}
+
+section img {
+  border-radius: 35px;
+  margin: 15px 0;
+  width: 700px;
+  max-width: 100%;
+  height: auto;
+}
+
+section ul li {
+  margin: 10px 20px;
+}
+
+section table {
+  cursor: pointer;
+  width: 700px;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+}
+
+section table th,
+section table td {
+  border: 1px solid #000;
+  padding: 12px;
+  text-align: center;
+}
+
+section table tr:hover {
+  transition: background-color 0.3s ease-in-out;
+  background-color: #ff6200f5;
+}
+
+footer {
+  display: flex;
+  padding-left: 30px;
+  align-items: center;
+  margin-top: 50px;
+  height: 130px;
+  color: #fff;
+  background-color: #000;
+}
+
+footer p a {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  
+
+  section {
+    margin: 80px 20px 0;
+  }
+
+  section img {
+    width: 100%;
+  }
+
+  section table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  section table th,
+  section table td {
+    padding: 8px;
+  }
+
+  footer {
+    padding-left: 20px;
+    height: 100px;
+    margin-top: 30px;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+ 
+
+  section {
+    margin: 80px 15px 0;
+  }
+
+  section h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  section table {
+    font-size: 12px;
+  }
+
+  section table th,
+  section table td {
+    padding: 6px 4px;
+  }
+
+  section table thead {
+    display: none;
+  }
+
+  section table tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #000;
+  }
+
+  section table td {
+    display: block;
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  section table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  footer {
+    padding-left: 15px;
+    height: 80px;
+    justify-content: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 320px) {
+
+  section table {
+    font-size: 11px;
+  }
+
+  footer p {
+    font-size: 11px;
+  }
+}

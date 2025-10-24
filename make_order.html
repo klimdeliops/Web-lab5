@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Construct</title>
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="make_order.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <div id="toast-container"></div>
+  <body>
+    <div id="header-placeholder"></div>
+    <main>
+      <section>
+        <h2>Выберите суп</h2>
+        <div class="filters" data-category="soup">
+          <button type="button" class="filter-btn" data-kind="fish">
+            рыбный
+          </button>
+          <button type="button" class="filter-btn" data-kind="meat">
+            мясной
+          </button>
+          <button type="button" class="filter-btn" data-kind="veg">
+            вегетарианский
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите главное блюдо</h2>
+        <div class="filters" data-category="main">
+          <button type="button" class="filter-btn" data-kind="fish">
+            рыбное
+          </button>
+          <button type="button" class="filter-btn" data-kind="meat">
+            мясное
+          </button>
+          <button type="button" class="filter-btn" data-kind="veg">
+            вегетарианское
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите салат или стартер</h2>
+        <div class="filters" data-category="salads_starters">
+          <button type="button" class="filter-btn" data-kind="fish">
+            рыбный
+          </button>
+          <button type="button" class="filter-btn" data-kind="meat">
+            мясной
+          </button>
+          <button type="button" class="filter-btn" data-kind="veg">
+            вегетарианский
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите напиток</h2>
+        <div class="filters" data-category="drink">
+          <button type="button" class="filter-btn" data-kind="cold">
+            холодный
+          </button>
+          <button type="button" class="filter-btn" data-kind="hot">
+            горячий
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+      <section>
+        <h2>Выберите десерт</h2>
+        <div class="filters" data-category="desserts">
+          <button type="button" class="filter-btn" data-kind="min">
+            маленькая порция
+          </button>
+          <button type="button" class="filter-btn" data-kind="mid">
+            средняя порция
+          </button>
+          <button type="button" class="filter-btn" data-kind="max">
+            большая порция
+          </button>
+        </div>
+        <div class="list"></div>
+      </section>
+    </main>
+    <section id="section">
+      <form id="orderForm" class="container">
+        <!-- Страница 1: Ваш заказ -->
+        <div class="loginform">
+          <h2>Ваш заказ</h2>
+          <div class="inputs">
+            <label for="soup">Суп</label>
+            <select name="soup" id="soup" >
+              <option value="">Не выбрано</option>
+              <option value="gazpacho">Гаспачо</option>
+              <option value="mushroom">Грибной суп-пюре</option>
+              <option value="norwegian">Норвежский суп</option>
+              <option value="ramen">Рамен</option>
+              <option value="tomyum">Том ям с креветками</option>
+              <option value="chicken">Куриный суп</option>
+            </select>
+            <label for="main">Главное блюдо</label>
+            <select name="main" id="main" >
+              <option value="">Не выбрано</option>
+              <option value="potatoes">Жареная картошка с грибами</option>
+              <option value="lasagna">Лазанья</option>
+              <option value="chickencutlets">
+                Котлеты из курицы с картофельным пюре
+              </option>
+              <option value="fishrice">Рыбная котлета с рисом и спаржей</option>
+              <option value="pizza">Пицца Маргарита</option>
+              <option value="shrimppasta">Паста с креветками</option>
+            </select>
+            <label for="salads_starters">Салат или стартер</label>
+            <select name="salads_starters" id="salads_starters">
+              <option value="">Не выбрано</option>
+              <option value="saladwithegg">
+                Корейский салат с овощами и яйцом
+              </option>
+              <option value="caesar">Цезарь с цыпленком</option>
+              <option value="caprese">Капрезе с моцареллой</option>
+              <option value="tunasalad">Салат с тунцом</option>
+              <option value="frenchfries1">
+                Картофель фри с соусом Цезарь
+              </option>
+              <option value="frenchfries2">Картофель фри с кетчупом</option>
+            </select>
+            <label for="drink">Напиток</label>
+            <select name="drink" id="drink" >
+              <option value="">Не выбрано</option>
+              <option value="orange">Апельсиновый сок</option>
+              <option value="apple">Яблочный сок</option>
+              <option value="carrot">Морковный сок</option>
+              <option value="cappuccino">Капучино</option>
+              <option value="greentea">Зеленый чай</option>
+              <option value="tea">Черный чай</option>
+            </select>
+            <label for="desserts">Десерт</label>
+            <select name="desserts" id="desserts" >
+              <option value="">Не выбрано</option>
+              <option value="baklava">Пахлава</option>
+              <option value="checheesecake">Чизкейк</option>
+              <option value="chocolatecheesecake">Шоколадный чизкейк</option>
+              <option value="chocolatecake">Шоколадный торт</option>
+              <option value="donuts2">Пончики (3 штуки)</option>
+              <option value="donuts">Пончики (6 штук)</option>
+            </select>
+            <label for="comment">Комментарии к заказу</label>
+            <textarea
+              id="comment"
+              name="comment"
+              rows="4"
+              placeholder="Напишите ваш комментарий здесь..."
+              maxlength="500"
+            ></textarea>
+          </div>
+          <button type="button" id="nextToData" class="btn-next">Далее</button>
+        </div>
+
+        <!-- Страница 2: Ваши данные -->
+        <div class="signupform">
+          <h2>Ваши данные</h2>
+          <div class="inputs">
+            <label for="name">ФИО</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Иванов Иван Иванович"
+              required
+            />
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email адрес"
+              required
+            />
+            <label class="checkbox-label">
+              <input type="checkbox" id="marketing" name="marketing" />
+              Получать информацию о скидках и акциях
+            </label>
+            <label for="phone">Номер телефона</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              maxlength="16"
+              placeholder="8-___-___-__-__"
+              required
+              oninput="formatPhone(this)"
+            />
+          </div>
+          <div class="navigation">
+            <button type="button" id="backToOrder" class="btn-back">
+              Назад
+            </button>
+            <button type="button" id="nextToDelivery" class="btn-next">
+              Далее
+            </button>
+          </div>
+        </div>
+
+        <!-- Страница 3: Доставка -->
+        <div class="deliveryform">
+          <div class="header-with-clear">
+            <h2>Детали доставки</h2>
+            <button type="reset" class="clear-btn" title="Очистить все формы">
+              <img
+                src="./img/free-icon-delete-216658.png"
+                alt=""
+                width="30px"
+              />
+            </button>
+          </div>
+          <div class="inputs">
+            <div class="delivery-address">
+              <label for="address">Адрес доставки</label><br /><br />
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Улица, дом, квартира"
+                required
+              />
+            </div>
+
+            <p class="delivery-info">
+              Доставка осуществляется только по Москве
+            </p>
+
+            <div class="time-option">
+              <label class="radio-label">
+                <input type="radio" name="deliveryTime" value="asap" checked />
+                <span class="radio-custom"></span>
+                Как можно скорее
+              </label>
+            </div>
+
+            <div class="time-option">
+              <label class="radio-label">
+                <input type="radio" name="deliveryTime" value="scheduled" />
+                <span class="radio-custom"></span>
+                К указанному времени
+              </label>
+            </div>
+
+            <div
+              class="scheduled-time"
+              id="scheduledTime"
+              style="display: none"
+            >
+              <label for="deliveryTime">Укажите время доставки</label>
+              <input
+                type="time"
+                id="deliveryTime"
+                name="deliveryTimeValue"
+                min="07:00"
+                max="23:00"
+                step="600"
+              />
+            </div>
+
+            <div class="delivery-note">
+              <p><strong>Доступное время доставки с 7:00 до 23:00</strong></p>
+            </div>
+          </div>
+          <div class="navigation">
+            <button type="button" id="backToData" class="btn-back">
+              Назад
+            </button>
+            <button type="submit" id="submitOrder" class="btn-next">
+              Оформить заказ
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <footer id="our_contacts">
+      <p>Позвонить нам <a href="">+7-000-000-00-00</a></p>
+    </footer>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <script src="./dishes.js"></script>
+    <script src="burger-menu.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

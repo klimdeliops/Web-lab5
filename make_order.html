@@ -17,6 +17,94 @@
   <body>
     <div id="header-placeholder"></div>
     <main>
+      <section class="combo-section">
+        <h2>Доступные для заказа комбо</h2>
+        <div class="combo-grid">
+          <!-- Вариант 1 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="soup">
+              <img src="img/icons/soup.png" alt="Суп" />
+              <span>Суп</span>
+            </div>
+            <div class="combo-item" data-jump="main">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="salads_starters">
+              <img src="img/icons/salads_starters.png" alt="Салат/стартер" />
+              <span>Салат</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 2 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="soup">
+              <img src="img/icons/soup.png" alt="Суп" />
+              <span>Суп</span>
+            </div>
+            <div class="combo-item" data-jump="main">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 3 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="soup">
+              <img src="img/icons/soup.png" alt="Суп" />
+              <span>Суп</span>
+            </div>
+            <div class="combo-item" data-jump="salads_starters">
+              <img src="img/icons/salads_starters.png" alt="Салат/стартер" />
+              <span>Салат</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 4 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="main">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="salads_starters">
+              <img src="img/icons/salads_starters.png" alt="Салат/стартер" />
+              <span>Салат</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 5 -->
+          <div class="combo-variant">
+            <div class="combo-item" data-jump="main">
+              <img src="img/icons/main.png" alt="Главное блюдо" />
+              <span>Главное блюдо</span>
+            </div>
+            <div class="combo-item" data-jump="drink">
+              <img src="img/icons/drink.png" alt="Напиток" />
+              <span>Напиток</span>
+            </div>
+          </div>
+          <!-- Вариант 6: только десерт -->
+          <div class="combo-variant dessert-only">
+            <div class="combo-item" data-jump="desserts">
+              <img src="img/icons/desserts.png" alt="Десерт" />
+              <span>Десерт</span>
+              <span class="combo-note">(Можно добавить к любому заказу)</span>
+            </div>
+          </div>
+        </div>
+      </section>
       <section>
         <h2>Выберите суп</h2>
         <div class="filters" data-category="soup">
@@ -97,7 +185,7 @@
           <h2>Ваш заказ</h2>
           <div class="inputs">
             <label for="soup">Суп</label>
-            <select name="soup" id="soup" >
+            <select name="soup" id="soup">
               <option value="">Не выбрано</option>
               <option value="gazpacho">Гаспачо</option>
               <option value="mushroom">Грибной суп-пюре</option>
@@ -107,7 +195,7 @@
               <option value="chicken">Куриный суп</option>
             </select>
             <label for="main">Главное блюдо</label>
-            <select name="main" id="main" >
+            <select name="main" id="main">
               <option value="">Не выбрано</option>
               <option value="potatoes">Жареная картошка с грибами</option>
               <option value="lasagna">Лазанья</option>
@@ -133,7 +221,7 @@
               <option value="frenchfries2">Картофель фри с кетчупом</option>
             </select>
             <label for="drink">Напиток</label>
-            <select name="drink" id="drink" >
+            <select name="drink" id="drink">
               <option value="">Не выбрано</option>
               <option value="orange">Апельсиновый сок</option>
               <option value="apple">Яблочный сок</option>
@@ -143,7 +231,7 @@
               <option value="tea">Черный чай</option>
             </select>
             <label for="desserts">Десерт</label>
-            <select name="desserts" id="desserts" >
+            <select name="desserts" id="desserts">
               <option value="">Не выбрано</option>
               <option value="baklava">Пахлава</option>
               <option value="checheesecake">Чизкейк</option>

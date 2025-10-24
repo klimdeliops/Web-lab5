@@ -188,6 +188,122 @@ main section .list .card button.added:hover {
   transform: scale(1.05);
 }
 
+.combo-section {
+  margin: 120px auto 30px;
+  text-align: center;
+}
+.combo-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 80px;
+}
+.combo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 90px 30px;
+  justify-items: center;
+}
+
+.combo-variant {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  justify-content: center;
+}
+
+.combo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.38, 0.87, 0.68, 1.21);
+}
+.combo-item img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 7px;
+  transition: transform 0.3s cubic-bezier(0.38, 0.87, 0.68, 1.21);
+}
+.combo-item:hover img {
+  transform: translateY(-10px) scale(1.19);
+}
+.combo-item span {
+  margin: 0;
+  font-size: 1rem;
+}
+.combo-item .combo-note {
+  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-left: 12px;
+}
+
+@media (max-width: 1400px) {
+  .combo-grid {
+    gap: 80px 15px;
+    justify-items: center;
+  }
+  .combo-variant {
+    gap: 5px;
+  }
+
+  .combo-item img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .combo-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .combo-variant {
+    margin-bottom: 45px;
+  }
+}
+@media (max-width: 780px) {
+  .combo-section h2 {
+    font-size: 1.8rem;
+  }
+  .combo-grid {
+    grid-template-columns: 1fr;
+  }
+   .combo-variant {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 550px) {
+   .combo-section h2 {
+    font-size: 1.5rem;
+  }
+   .combo-variant {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+   .combo-section h2 {
+    font-size: 1.5rem;
+  }
+   .combo-variant {
+    gap: 10px;
+  }
+  .combo-item img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .combo-item span {
+  font-size: 0.8rem;
+}
+.combo-item .combo-note {
+  font-style: italic;
+  font-size: 0.7rem;
+}
+}
+
 .filters {
   display: flex;
   gap: 30px;
@@ -537,7 +653,6 @@ footer p a {
 }
 
 @media (max-width: 800px) {
-
   main section {
     padding: 20px 30px;
   }
@@ -610,7 +725,6 @@ footer p a {
 }
 
 @media (max-width: 480px) {
-
   main section {
     padding: 15px 20px;
   }

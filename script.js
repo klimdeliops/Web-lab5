@@ -114,8 +114,6 @@ document.getElementById("orderForm").addEventListener("reset", function () {
   }, 100);
 });
 
-
-
 function getCategoryName(key) {
   const map = {
     soup: "Суп",
@@ -258,6 +256,43 @@ function showToast({ message, type = "success", duration = 2500 }) {
   setTimeout(() => toast.remove(), duration);
 }
 
+function showBigCenterNotify(message) {
+  if (document.getElementById("big-notify")) return;
+  const notify = document.createElement("div");
+  notify.id = "big-notify";
+  notify.style.position = "fixed";
+  notify.style.top = 0;
+  notify.style.left = 0;
+  notify.style.width = "100vw";
+  notify.style.height = "100vh";
+  notify.style.display = "flex";
+  notify.style.alignItems = "center";
+  notify.style.justifyContent = "center";
+  notify.style.background = "rgba(20,27,29,0.22)";
+  notify.style.zIndex = "99999";
+  notify.innerHTML = `<div style="
+    background: #fff; padding: 38px 38px 26px 38px; border-radius: 24px;
+    box-shadow: 0 8px 40px rgba(44,44,72,.14); text-align: center; min-width: 320px; max-width: 93vw;">
+      <div style="font-size:1.45em;margin-bottom:18px;">${message}</div>
+      <button id="big-ok-btn" style="
+        padding: 12px 38px; font-size: 1.1rem; background: #ff7c01; color: #fff; border:none; border-radius:18px;
+        transition:.21s">Окей</button>
+    </div>`;
+  const btn = notify.querySelector("#big-ok-btn");
+  btn.onmouseover = function () {
+    this.style.background = "#333";
+    this.style.color = "#ffd6ae";
+  };
+  btn.onmouseout = function () {
+    this.style.background = "#ff7c01";
+    this.style.color = "#fff";
+  };
+  btn.onclick = function () {
+    notify.remove();
+  };
+  document.body.appendChild(notify);
+}
+
 function createCostBlock() {
   let commentArea = document.getElementById("comment");
   let costBlock = document.getElementById("order-cost");
@@ -293,17 +328,68 @@ function updateOrderCost() {
   return total;
 }
 
+function getSelected(key) {
+  return document.getElementById(key)?.value;
+}
+
+const combos = [
+  (combo) => combo.soup && combo.main && combo.salads_starters && combo.drink, // Вариант 1
+  (combo) => combo.soup && combo.main && combo.drink && !combo.salads_starters, // Вариант 2
+  (combo) => combo.soup && combo.salads_starters && combo.drink && !combo.main, // Вариант 3
+  (combo) => combo.main && combo.salads_starters && combo.drink && !combo.soup, // Вариант 4
+  (combo) => combo.main && combo.drink && !combo.soup && !combo.salads_starters, // Вариант 5
+];
+
+function validateCombo() {
+  const combo = {
+    soup: getSelected("soup"),
+    main: getSelected("main"),
+    salads_starters: getSelected("salads_starters"),
+    drink: getSelected("drink"),
+  };
+  if (!combo.soup && !combo.main && !combo.salads_starters && !combo.drink)
+    return {
+      valid: false,
+      msg: "Ничего не выбрано. Выберите блюда для заказа",
+    };
+  const match = combos.some((fn) => fn(combo));
+  if (!match) {
+    if (!combo.drink) return { valid: false, msg: "Выберите напиток" };
+    if (combo.soup && !combo.main && !combo.salads_starters)
+      return { valid: false, msg: "Выберите главное блюдо/салат/стартер" };
+    if ((combo.salads_starters || combo.main) && !combo.drink)
+      return { valid: false, msg: "Выберите напиток" };
+    if (combo.soup && !combo.main && !combo.salads_starters)
+      return { valid: false, msg: "Выберите главное блюдо/салат/стартер" };
+    if (combo.salads_starters && !combo.main && !combo.soup)
+      return { valid: false, msg: "Выберите суп или главное блюдо" };
+    if (combo.drink && !combo.main && !combo.soup && !combo.salads_starters)
+      return { valid: false, msg: "Выберите главное блюдо" };
+    return {
+      valid: false,
+      msg: "Соберите корректный ланч: выберите категории как на картинке",
+    };
+  }
+  return { valid: true };
+}
+
 document.getElementById("submitOrder").addEventListener("click", function (e) {
   e.preventDefault();
   if (!validateForm()) {
     alert("Пожалуйста, заполните все обязательные поля");
     return;
   }
+  const comboResult = validateCombo();
+  if (!comboResult.valid) {
+    showBigCenterNotify(comboResult.msg);
+    return;
+  }
 
   const formData = {
     soup: document.getElementById("soup").selectedOptions[0].text,
     main: document.getElementById("main").selectedOptions[0].text,
-    salads_starters: document.getElementById("salads_starters").selectedOptions[0].text,
+    salads_starters: document.getElementById("salads_starters")
+      .selectedOptions[0].text,
     drink: document.getElementById("drink").selectedOptions[0].text,
     desserts: document.getElementById("desserts").selectedOptions[0].text,
     comment: document.getElementById("comment").value,
@@ -360,5 +446,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById(cat).addEventListener("change", () => {
     updateOrderCost();
     renderAllCategories();
+  });
+});
+
+document.querySelectorAll(".combo-item").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const id = this.getAttribute("data-jump");
+    const sec = document.querySelector(
+      `section .filters[data-category="${id}"]`
+    );
+    if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
